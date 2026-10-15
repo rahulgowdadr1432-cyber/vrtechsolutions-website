@@ -107,7 +107,7 @@ footer span{color:var(--gold)}
   <div class="contact-grid">
     <div class="contact-info">
       <h3>Contact Information</h3>
-      <p>📧 Email: <a href="mailto:vrtechsolutions@gmail.com">vrtechsolutions@gmail.com</a></p>
+      <p>📧 Email: <a href="mailto:vrtechsolutions24@gmail.com">vrtechsolutions@gmail.com</a></p>
       <p>📱 WhatsApp: <a href="https://wa.me/918970240304" target="_blank" rel="noopener">+91 89702 40304</a></p>
       <p>💬 Click the WhatsApp link to contact us directly.</p>
     </div>
