@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
 <title>VR Tech Solutions | IT Services</title>
 <meta name="description" content="VR Tech Solutions provides website development, software solutions and digital marketing services.">
 <style>
