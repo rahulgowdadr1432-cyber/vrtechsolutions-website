@@ -1,10 +1,10 @@
-from pathlib import Path
+
 
 code = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=4.0">
   <title>VR Tech Solutions | IT Services</title>
   <meta name="description" content="VR Tech Solutions provides website development, software solutions, digital marketing and business technology support.">
   <style>
@@ -141,8 +141,4 @@ code = """<!DOCTYPE html>
   </script>
 </body>
 </html>
-"""
 
-path = Path("/mnt/data/vrtechsolutions_index.html")
-path.write_text(code, encoding="utf-8")
-print(f"Created complete HTML file: {path}")
