@@ -155,10 +155,8 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
-alert("Supabase client is ready!");
 
 document.getElementById("enquiryForm").addEventListener("submit", function(event) {
-  alert("Enquiry form submit is working!");
 });
 document.getElementById("enquiryForm").addEventListener("submit", async function(event) {
   event.preventDefault();
