@@ -145,9 +145,20 @@ footer span{color:var(--gold)}
 </footer>
 
 <script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+const SUPABASE_URL = "https://ugpqkphnwivnecmjnljo.supabase.co";
+const SUPABASE_KEY = "sb_publishable_F9ecHqri0HHV5CmUA6jZpQ_FCWjTQo0";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.getElementById("enquiryForm").addEventListener("submit", async function(event) {
   event.preventDefault();
 
   const name = document.getElementById("name").value.trim();
@@ -160,18 +171,60 @@ document.getElementById("enquiryForm").addEventListener("submit", function(event
     return;
   }
 
-  const text =
-    "VR Tech Solutions - Customer Enquiry\n\n" +
-    "Name: " + name + "\n" +
-    "Customer Phone: " + phone + "\n" +
-    "Service: " + service + "\n" +
-    "Details: " + (message || "Not provided");
+  const whatsappWindow = window.open("about:blank", "_blank");
 
-  window.open(
-    "https://wa.me/918970240304?text=" + encodeURIComponent(text),
-    "_blank"
-  );
+  const submitButton = this.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = "Saving Enquiry...";
+
+  try {
+    const { error } = await supabaseClient
+      .from("enquiries")
+      .insert([{
+        customer_name: name,
+        phone: phone,
+        service: service,
+        message: message
+      }]);
+
+    if (error) {
+      console.error("Supabase error:", error);
+      if (whatsappWindow) whatsappWindow.close();
+
+      alert("Enquiry could not be saved. Please try again or contact us on WhatsApp.");
+      return;
+    }
+
+    const text =
+      "VR Tech Solutions - Customer Enquiry\n\n" +
+      "Name: " + name + "\n" +
+      "Customer Phone: " + phone + "\n" +
+      "Service: " + service + "\n" +
+      "Details: " + (message || "Not provided");
+
+    const whatsappURL =
+      "https://wa.me/918970240304?text=" +
+      encodeURIComponent(text);
+
+    alert("Enquiry saved successfully!");
+
+    if (whatsappWindow) {
+      whatsappWindow.location.href = whatsappURL;
+    } else {
+      window.location.href = whatsappURL;
+    }
+
+    this.reset();
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    if (whatsappWindow) whatsappWindow.close();
+    alert("Something went wrong. Please try again.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Enquiry on WhatsApp";
+  }
 });
+</script>
 </script>
 </script>
 
