@@ -171,10 +171,16 @@ document.getElementById("enquiryForm").addEventListener("submit", async function
   alert("STEP 1: Form validation passed!");
   const whatsappWindow = window.open("about:blank", "_blank");
 
-  const submitButton = this.querySelector('button[type="submit"]');
+  const submitButton = document.querySelector(
+  '#enquiryForm button[type="submit"]'
+);
+
+if (submitButton) {
   submitButton.disabled = true;
   submitButton.textContent = "Saving Enquiry...";
-  alert("STEP 2: Trying to save to Supabase!");
+}
+
+alert("STEP 2: Trying to save to Supabase!");
   try {
     const { error } = await supabaseClient
       .from("enquiries")
