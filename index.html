@@ -115,27 +115,35 @@
   <footer><p>© <span id="year"></span> <span>VR TECH SOLUTIONS</span>. All rights reserved.</p></footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("enquiryForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const service = document.getElementById("service").value;
-      const message = document.getElementById("message").value.trim();
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-      if (!/^[0-9]{10}$/.test(phone)) {
-        alert("Please enter a valid 10-digit mobile number.");
-        return;
-      }
+  document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      const text = "VR Tech Solutions - Customer Enquiry\\n\\n" +
-        "Name: " + name + "\\n" +
-        "Customer Phone: " + phone + "\\n" +
-        "Service: " + service + "\\n" +
-        "Details: " + (message || "Not provided");
-      const whatsappURL = "https://wa.me/918970240304?text=" + encodeURIComponent(text);
-      window.location.href = whatsappURL;
-    });
-  </script>
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    const text =
+      "VR TECH SOLUTIONS\n" +
+      "NEW CUSTOMER ENQUIRY\n\n" +
+      "Customer Name: " + name + "\n" +
+      "Customer Phone: " + phone + "\n" +
+      "Interested Service: " + service + "\n" +
+      "Additional Details: " + (message || "Not provided") + "\n\n" +
+      "Thank you for contacting VR Tech Solutions!";
+
+    const whatsappURL =
+      "https://wa.me/918970240304?text=" + encodeURIComponent(text);
+
+    window.location.href = whatsappURL;
+  });
+</script>
 </body>
 </html>
