@@ -168,13 +168,13 @@ document.getElementById("enquiryForm").addEventListener("submit", async function
     alert("Please enter a valid 10-digit mobile number.");
     return;
   }
-
+  alert("STEP 1: Form validation passed!");
   const whatsappWindow = window.open("about:blank", "_blank");
 
   const submitButton = this.querySelector('button[type="submit"]');
   submitButton.disabled = true;
   submitButton.textContent = "Saving Enquiry...";
-
+  alert("STEP 2: Trying to save to Supabase!");
   try {
     const { error } = await supabaseClient
       .from("enquiries")
