@@ -32,6 +32,16 @@
     .icon{font-size:32px}
     .card h3{color:var(--gold);margin:12px 0}
     .card p,.about p{color:#bbb}
+    .service-card{cursor:pointer}
+    .service-card:focus{outline:2px solid var(--gold);outline-offset:3px}
+    .service-hint{font-size:13px;color:var(--gold);margin-top:14px}
+    .details-panel{display:none;margin-top:25px;padding:25px;background:#101010;border:1px solid var(--gold);border-radius:10px}
+    .details-panel.active{display:block}
+    .details-panel h3{color:var(--gold);font-size:24px;margin-bottom:10px}
+    .details-panel p{color:#ddd;margin:10px 0}
+    .details-panel ul{padding-left:22px;color:#ddd;margin:12px 0}
+    .details-panel li{margin:5px 0}
+    .details-actions{margin-top:14px}
     .about{background:#101010;text-align:center}
     .about p{max-width:750px;margin:15px auto}
     .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;align-items:start}
@@ -68,12 +78,40 @@
 
     <section id="services">
       <h2 class="section-title">Our <span>Services</span></h2>
-      <p class="subtitle">Technology solutions for your business needs.</p>
+      <p class="subtitle">Click any service to view its details.</p>
       <div class="services">
-        <article class="card"><div class="icon" aria-hidden="true">💻</div><h3>Website Development</h3><p>Modern, responsive websites designed to present your business professionally on mobile and desktop.</p></article>
-        <article class="card"><div class="icon" aria-hidden="true">⚙️</div><h3>Software &amp; IT Services</h3><p>Practical technology solutions and IT support to help your business work efficiently.</p></article>
-        <article class="card"><div class="icon" aria-hidden="true">📱</div><h3>Digital Marketing</h3><p>Digital promotion strategies to help businesses reach customers and build their online presence.</p></article>
-        <article class="card"><div class="icon" aria-hidden="true">🤝</div><h3>Business Support</h3><p>Digital assistance and technology guidance for small businesses and growing teams.</p></article>
+        <article class="card service-card" tabindex="0" role="button" data-service="website">
+          <div class="icon" aria-hidden="true">💻</div><h3>Website Development</h3>
+          <p>Modern, responsive websites designed to present your business professionally on mobile and desktop.</p>
+          <p class="service-hint">Click to view details →</p>
+        </article>
+        <article class="card service-card" tabindex="0" role="button" data-service="it">
+          <div class="icon" aria-hidden="true">⚙️</div><h3>Software &amp; IT Services</h3>
+          <p>Practical technology solutions and IT support to help your business work efficiently.</p>
+          <p class="service-hint">Click to view details →</p>
+        </article>
+        <article class="card service-card" tabindex="0" role="button" data-service="marketing">
+          <div class="icon" aria-hidden="true">📱</div><h3>Digital Marketing</h3>
+          <p>Digital promotion strategies to help businesses reach customers and build their online presence.</p>
+          <p class="service-hint">Click to view details →</p>
+        </article>
+        <article class="card service-card" tabindex="0" role="button" data-service="business">
+          <div class="icon" aria-hidden="true">🤝</div><h3>Business Support</h3>
+          <p>Digital assistance and technology guidance for small businesses and growing teams.</p>
+          <p class="service-hint">Click to view details →</p>
+        </article>
+      </div>
+
+      <div id="serviceDetails" class="details-panel" aria-live="polite">
+        <h3 id="detailsTitle">Service Details</h3>
+        <p id="detailsIntro"></p>
+        <h4>What this service may include</h4>
+        <ul id="detailsList"></ul>
+        <p id="detailsNote"></p>
+        <div class="details-actions">
+          <a id="detailsEnquire" class="btn" href="#contact">Enquire About This Service</a>
+          <button id="closeDetails" class="btn btn-outline" type="button">Close Details</button>
+        </div>
       </div>
     </section>
 
@@ -99,7 +137,7 @@
           <input id="name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Enter your name">
           <label for="phone">Mobile Number</label>
           <input id="phone" name="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile number">
-          <label for="service">Select Service</label>
+          <label for="service" >Select Service</label>
           <select id="service" name="service" required>
             <option value="">Choose a service</option><option>Website Development</option><option>Software &amp; IT Services</option><option>Digital Marketing</option><option>Business Support</option><option>Other</option>
           </select>
@@ -115,35 +153,138 @@
   <footer><p>© <span id="year"></span> <span>VR TECH SOLUTIONS</span>. All rights reserved.</p></footer>
 
   <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  document.getElementById("enquiryForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    const serviceDetails = {
+      website: {
+        title: "Website Development",
+        intro: "Build a professional online presence with a website designed around your business and customers.",
+        items: [
+          "Business and company websites",
+          "Responsive layouts for mobile, tablet and desktop",
+          "Service pages and contact information",
+          "Customer enquiry forms connected to WhatsApp",
+          "Basic on-page SEO structure"
+        ],
+        note: "Final features, timeline and pricing depend on your requirements."
+      },
+      it: {
+        title: "Software & IT Services",
+        intro: "Practical technology assistance to help your day-to-day business operations run smoothly.",
+        items: [
+          "IT setup and troubleshooting guidance",
+          "Software installation and basic configuration support",
+          "Workflow and digital tool recommendations",
+          "Website maintenance and technical assistance"
+        ],
+        note: "Available support depends on the specific issue and project scope."
+      },
+      marketing: {
+        title: "Digital Marketing",
+        intro: "Promote your business online and help potential customers discover your products or services.",
+        items: [
+          "Social media page and content planning",
+          "Promotional post and campaign planning",
+          "Digital advertising setup guidance",
+          "Business profile and online presence improvements",
+          "Basic performance review and recommendations"
+        ],
+        note: "Advertising spend, posting schedule and deliverables are agreed before work begins."
+      },
+      business: {
+        title: "Business Support",
+        intro: "Digital guidance for small businesses that want to organize their work and serve customers more effectively.",
+        items: [
+          "Digital tools for everyday business tasks",
+          "Customer enquiry and follow-up workflow ideas",
+          "Basic online business presence guidance",
+          "Technology recommendations based on business needs"
+        ],
+        note: "The exact support plan is tailored to the requirements discussed with you."
+      }
+    };
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const service = document.getElementById("service").value;
-    const message = document.getElementById("message").value.trim();
+    const detailsPanel = document.getElementById("serviceDetails");
+    const detailsTitle = document.getElementById("detailsTitle");
+    const detailsIntro = document.getElementById("detailsIntro");
+    const detailsList = document.getElementById("detailsList");
+    const detailsNote = document.getElementById("detailsNote");
+    const detailsEnquire = document.getElementById("detailsEnquire");
+    const serviceSelect = document.getElementById("service");
 
-    if (!/^[0-9]{10}$/.test(phone)) {
-      alert("Please enter a valid 10-digit mobile number.");
-      return;
+    function showServiceDetails(key) {
+      const detail = serviceDetails[key];
+      if (!detail) return;
+
+      detailsTitle.textContent = detail.title;
+      detailsIntro.textContent = detail.intro;
+      detailsList.replaceChildren();
+
+      detail.items.forEach(function(item) {
+        const li = document.createElement("li");
+        li.textContent = item;
+        detailsList.appendChild(li);
+      });
+
+      detailsNote.textContent = detail.note;
+      detailsEnquire.onclick = function() {
+        serviceSelect.value = detail.title;
+        if (![...serviceSelect.options].some(option => option.value === detail.title)) {
+          const option = document.createElement("option");
+          option.value = detail.title;
+          option.textContent = detail.title;
+          serviceSelect.appendChild(option);
+          serviceSelect.value = detail.title;
+        }
+      };
+
+      detailsPanel.classList.add("active");
+      detailsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
-    const text =
-      "VR TECH SOLUTIONS\n" +
-      "NEW CUSTOMER ENQUIRY\n\n" +
-      "Customer Name: " + name + "\n" +
-      "Customer Phone: " + phone + "\n" +
-      "Interested Service: " + service + "\n" +
-      "Additional Details: " + (message || "Not provided") + "\n\n" +
-      "Thank you for contacting VR Tech Solutions!";
+    document.querySelectorAll(".service-card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        showServiceDetails(card.dataset.service);
+      });
+      card.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          showServiceDetails(card.dataset.service);
+        }
+      });
+    });
 
-    const whatsappURL =
-      "https://wa.me/918970240304?text=" + encodeURIComponent(text);
+    document.getElementById("closeDetails").addEventListener("click", function() {
+      detailsPanel.classList.remove("active");
+    });
 
-    window.location.href = whatsappURL;
-  });
-</script>
+    document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      const text =
+        "VR TECH SOLUTIONS\n" +
+        "NEW CUSTOMER ENQUIRY\n\n" +
+        "Customer Name: " + name + "\n" +
+        "Customer Phone: " + phone + "\n" +
+        "Interested Service: " + service + "\n" +
+        "Additional Details: " + (message || "Not provided") + "\n\n" +
+        "Thank you for contacting VR Tech Solutions!";
+
+      const whatsappURL =
+        "https://wa.me/918970240304?text=" + encodeURIComponent(text);
+
+      window.location.href = whatsappURL;
+    });
+  </script>
 </body>
 </html>
