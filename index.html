@@ -1,99 +1,426 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta name="google-site-verification" content="wIt8BvTlNZDMr8NNDlJhOJuqrE8lE8OIdQ0FmPMST3c" />
+<meta name="google-site-verification" content="wIt8BvTlNZDMr8NNDlJhOJuqrE8lE8OIdQ0FmPMST3c" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VR Tech Solutions | Smart Digital Solutions</title>
 <meta name="description" content="VR Tech Solutions offers website development, software and IT services, digital marketing and business support.">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:95px}
+
 :root{
- --gold:#f4c96b;--blue:#69c9ff;--cyan:#75f0df;
- --bg:#07111f;--card:rgba(255,255,255,.075);
- --line:rgba(255,255,255,.16);--muted:#b8c5d8;
- --glass:rgba(255,255,255,.075);--shadow:0 22px 65px rgba(0,0,0,.32)
+ --gold:#f4c96b;
+ --blue:#69c9ff;
+ --cyan:#75f0df;
+ --bg:#07111f;
+ --card:rgba(255,255,255,.075);
+ --line:rgba(255,255,255,.16);
+ --muted:#b8c5d8;
+ --glass:rgba(255,255,255,.075);
+ --shadow:0 22px 65px rgba(0,0,0,.32)
 }
+
 body{
- font-family:Arial,Helvetica,sans-serif;color:#f7f9ff;line-height:1.6;min-height:100vh;
- background:radial-gradient(ellipse at 12% 8%,rgba(38,133,224,.28),transparent 34%),
+ font-family:Arial,Helvetica,sans-serif;
+ color:#f7f9ff;
+ line-height:1.6;
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse at 12% 8%,rgba(38,133,224,.28),transparent 34%),
  radial-gradient(ellipse at 88% 30%,rgba(34,205,190,.16),transparent 32%),
  linear-gradient(145deg,#06101d,#0b1930 55%,#07111f);
- background-attachment:fixed;overflow-x:hidden
+ background-attachment:fixed;
+ overflow-x:hidden
 }
-body:before,body:after{content:"";position:fixed;width:360px;height:360px;border-radius:50%;filter:blur(95px);opacity:.16;z-index:-1;pointer-events:none}
+
+body:before,body:after{
+ content:"";
+ position:fixed;
+ width:360px;
+ height:360px;
+ border-radius:50%;
+ filter:blur(95px);
+ opacity:.16;
+ z-index:-1;
+ pointer-events:none
+}
 body:before{background:#168cff;top:15%;left:-200px}
 body:after{background:#16d6c2;right:-200px;bottom:5%}
+
 a{color:inherit}
+
 header{
- position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
- padding:13px 5.5%;background:rgba(5,13,26,.76);border-bottom:1px solid var(--line);
- backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)
+ position:sticky;
+ top:0;
+ z-index:100;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:18px;
+ flex-wrap:wrap;
+ padding:13px 5.5%;
+ background:rgba(5,13,26,.76);
+ border-bottom:1px solid var(--line);
+ backdrop-filter:blur(20px);
+ -webkit-backdrop-filter:blur(20px)
 }
+
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mark{width:62px;height:50px;display:grid;place-items:center;border:2px solid var(--gold);border-radius:50% 45% 50% 35%;font-size:29px;font-weight:900;font-style:italic;letter-spacing:-5px;color:var(--gold);transform:skew(-8deg);background:rgba(244,201,107,.07);box-shadow:0 0 25px rgba(244,201,107,.12)}
-.brand-name{font-size:clamp(16px,2vw,23px);font-weight:900;line-height:1.15;color:#fff;letter-spacing:.6px}
+
+.mark{
+ width:62px;
+ height:50px;
+ display:grid;
+ place-items:center;
+ border:2px solid var(--gold);
+ border-radius:50% 45% 50% 35%;
+ font-size:29px;
+ font-weight:900;
+ font-style:italic;
+ letter-spacing:-5px;
+ color:var(--gold);
+ transform:skew(-8deg);
+ background:rgba(244,201,107,.07);
+ box-shadow:0 0 25px rgba(244,201,107,.12)
+}
+
+.brand-name{
+ font-size:clamp(16px,2vw,23px);
+ font-weight:900;
+ line-height:1.15;
+ color:#fff;
+ letter-spacing:.6px
+}
 .brand-name span{color:var(--gold)}
 .tagline{font-size:9px;letter-spacing:2px;color:#c5d2e3;margin-top:6px}
+
 nav{display:flex;gap:22px;flex-wrap:wrap}
 nav a{color:#e5edf8;text-decoration:none;font-size:14px;transition:.2s}
 nav a:hover{color:var(--cyan)}
-.top-cta{border:1px solid rgba(244,201,107,.55);border-radius:28px;padding:9px 16px;color:var(--gold);text-decoration:none;font-weight:bold;font-size:13px;background:rgba(244,201,107,.07);backdrop-filter:blur(12px)}
+
+.top-cta{
+ border:1px solid rgba(244,201,107,.55);
+ border-radius:28px;
+ padding:9px 16px;
+ color:var(--gold);
+ text-decoration:none;
+ font-weight:bold;
+ font-size:13px;
+ background:rgba(244,201,107,.07);
+ backdrop-filter:blur(12px)
+}
 .top-cta:hover{background:rgba(244,201,107,.15)}
+
 .hero{
- position:relative;overflow:hidden;min-height:455px;padding:70px 6%;display:flex;align-items:center;
+ position:relative;
+ overflow:hidden;
+ min-height:455px;
+ padding:70px 6%;
+ display:flex;
+ align-items:center;
  border-bottom:1px solid var(--line);
  background:radial-gradient(ellipse at 72% 45%,rgba(54,142,202,.24),transparent 38%),transparent
 }
-.hero:after{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.055);border-radius:28px;pointer-events:none}
+
+.hero:after{
+ content:"";
+ position:absolute;
+ inset:18px;
+ border:1px solid rgba(255,255,255,.055);
+ border-radius:28px;
+ pointer-events:none
+}
+
 .hero-content{position:relative;z-index:2;width:65%;max-width:720px}
-.eyebrow{display:inline-block;font-size:12px;letter-spacing:3px;font-weight:bold;color:var(--cyan);padding:8px 13px;border:1px solid rgba(117,240,223,.25);border-radius:30px;background:rgba(117,240,223,.07)}
-h1{font-size:clamp(38px,5.5vw,70px);line-height:1.08;letter-spacing:-1px;margin:18px 0}
+
+.eyebrow{
+ display:inline-block;
+ font-size:12px;
+ letter-spacing:3px;
+ font-weight:bold;
+ color:var(--cyan);
+ padding:8px 13px;
+ border:1px solid rgba(117,240,223,.25);
+ border-radius:30px;
+ background:rgba(117,240,223,.07)
+}
+
+h1{
+ font-size:clamp(38px,5.5vw,70px);
+ line-height:1.08;
+ letter-spacing:-1px;
+ margin:18px 0
+}
+
 h1 span,.section-title span,footer span{color:var(--gold)}
-.hero-sub{font-size:clamp(22px,2.7vw,34px);line-height:1.2;color:#f3f7ff;margin-bottom:15px}
+
+.hero-sub{
+ font-size:clamp(22px,2.7vw,34px);
+ line-height:1.2;
+ color:#f3f7ff;
+ margin-bottom:15px
+}
+
 .hero-copy{max-width:520px;color:#c5d1e1;margin-bottom:22px}
-.btn{display:inline-block;background:linear-gradient(110deg,var(--gold),#ffe4a0);color:#111522;text-decoration:none;font-weight:bold;padding:12px 19px;border-radius:28px;margin:5px 7px 5px 0;border:1px solid rgba(255,255,255,.22);cursor:pointer;font-size:14px;box-shadow:0 8px 24px rgba(244,201,107,.15);transition:.22s}
-.outline{background:rgba(255,255,255,.055);color:var(--gold);border:1px solid rgba(244,201,107,.55);backdrop-filter:blur(10px);box-shadow:none}
+
+.btn{
+ display:inline-block;
+ background:linear-gradient(110deg,var(--gold),#ffe4a0);
+ color:#111522;
+ text-decoration:none;
+ font-weight:bold;
+ padding:12px 19px;
+ border-radius:28px;
+ margin:5px 7px 5px 0;
+ border:1px solid rgba(255,255,255,.22);
+ cursor:pointer;
+ font-size:14px;
+ box-shadow:0 8px 24px rgba(244,201,107,.15);
+ transition:.22s
+}
+
+.outline{
+ background:rgba(255,255,255,.055);
+ color:var(--gold);
+ border:1px solid rgba(244,201,107,.55);
+ backdrop-filter:blur(10px);
+ box-shadow:none
+}
+
 .btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
-.desk-scene{position:absolute;right:3%;bottom:42px;width:34%;height:270px;pointer-events:none;opacity:.9}
+
+.desk-scene{
+ position:absolute;
+ right:3%;
+ bottom:42px;
+ width:34%;
+ height:270px;
+ pointer-events:none;
+ opacity:.9
+}
+
 .laptop{position:absolute;right:4%;top:25px;width:95%;height:210px}
-.screen{height:190px;border:5px solid rgba(206,224,245,.32);border-radius:13px 13px 5px 5px;background:linear-gradient(145deg,rgba(25,54,82,.8),rgba(3,9,18,.9));box-shadow:0 0 0 1px rgba(255,255,255,.25),0 12px 30px #0009;display:flex;align-items:center;justify-content:center;text-align:center;backdrop-filter:blur(15px)}
-.screen-logo{font-size:48px;line-height:1;color:var(--gold);font-weight:900;font-style:italic;letter-spacing:-7px}
-.screen-title{font-size:18px;font-weight:900;margin-top:7px}.screen-title span{color:var(--gold)}
+
+.screen{
+ height:190px;
+ border:5px solid rgba(206,224,245,.32);
+ border-radius:13px 13px 5px 5px;
+ background:linear-gradient(145deg,rgba(25,54,82,.8),rgba(3,9,18,.9));
+ box-shadow:0 0 0 1px rgba(255,255,255,.25),0 12px 30px #0009;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ backdrop-filter:blur(15px)
+}
+
+.screen-logo{
+ font-size:48px;
+ line-height:1;
+ color:var(--gold);
+ font-weight:900;
+ font-style:italic;
+ letter-spacing:-7px
+}
+
+.screen-title{font-size:18px;font-weight:900;margin-top:7px}
+.screen-title span{color:var(--gold)}
 .screen-tag{font-size:8px;letter-spacing:2px;color:#ddd}
-.keyboard{height:30px;background:linear-gradient(rgba(218,231,246,.85),rgba(72,88,108,.9) 45%,#101a29);clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);opacity:.8}
+
+.keyboard{
+ height:30px;
+ background:linear-gradient(rgba(218,231,246,.85),rgba(72,88,108,.9) 45%,#101a29);
+ clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);
+ opacity:.8
+}
+
 section{padding:66px 6%}
+
 .section-title{text-align:center;font-size:34px;margin-bottom:8px}
 .subtitle{text-align:center;color:var(--muted);margin-bottom:32px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+
+.services{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:20px
+}
+
 .card{
  background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));
- padding:24px;border:1px solid var(--line);border-radius:18px;transition:.25s;cursor:pointer;
- box-shadow:0 16px 40px rgba(0,0,0,.2);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+ padding:24px;
+ border:1px solid var(--line);
+ border-radius:18px;
+ transition:.25s;
+ cursor:pointer;
+ box-shadow:0 16px 40px rgba(0,0,0,.2);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px)
 }
-.card:hover{transform:translateY(-6px);border-color:rgba(105,201,255,.6);background:linear-gradient(145deg,rgba(105,201,255,.14),rgba(255,255,255,.045));box-shadow:0 22px 45px rgba(0,0,0,.3)}
+
+.card:hover{
+ transform:translateY(-6px);
+ border-color:rgba(105,201,255,.6);
+ background:linear-gradient(145deg,rgba(105,201,255,.14),rgba(255,255,255,.045));
+ box-shadow:0 22px 45px rgba(0,0,0,.3)
+}
+
 .card:focus{outline:2px solid var(--cyan);outline-offset:3px}
 .icon{font-size:34px}
 .card h3{color:var(--gold);margin:10px 0}
 .card p{color:#cbd5e4}
 .hint{font-size:13px;color:var(--cyan);margin-top:13px}
-.details{display:none;margin-top:24px;padding:24px;background:rgba(9,23,42,.72);border:1px solid rgba(244,201,107,.6);border-radius:18px;backdrop-filter:blur(20px);box-shadow:var(--shadow)}
+
+.details{
+ display:none;
+ margin-top:24px;
+ padding:24px;
+ background:rgba(9,23,42,.72);
+ border:1px solid rgba(244,201,107,.6);
+ border-radius:18px;
+ backdrop-filter:blur(20px);
+ box-shadow:var(--shadow)
+}
+
 .details.active{display:block}
 .details h3{color:var(--gold);font-size:24px}
 .details p{color:#e0e8f3;margin:10px 0}
 .details ul{padding-left:22px;margin:10px 0;color:#e0e8f3}
 .details li{margin:5px 0}
-.about{background:rgba(255,255,255,.045);text-align:center;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(12px)}
-.about p{max-width:750px;margin:14px auto;color:#c5d1e1}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
-.contact-info{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--glass);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+
+/* ABOUT US */
+.about{
+ background:rgba(255,255,255,.045);
+ text-align:center;
+ border-top:1px solid rgba(255,255,255,.07);
+ border-bottom:1px solid rgba(255,255,255,.07);
+ backdrop-filter:blur(12px)
+}
+
+.about p{
+ max-width:750px;
+ margin:14px auto;
+ color:#c5d1e1
+}
+
+/* NEW VISION AND MISSION DESIGN */
+.vm-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:22px;
+ max-width:1050px;
+ margin:35px auto 0;
+ text-align:left
+}
+
+.vm-card{
+ background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));
+ border:1px solid rgba(244,201,107,.45);
+ border-radius:18px;
+ padding:28px;
+ box-shadow:0 16px 40px rgba(0,0,0,.2);
+ transition:.3s;
+ backdrop-filter:blur(18px)
+}
+
+.vm-card:hover{
+ transform:translateY(-6px);
+ border-color:var(--gold);
+ box-shadow:0 20px 45px rgba(244,201,107,.12)
+}
+
+.vm-card h3{
+ color:var(--gold);
+ font-size:22px;
+ margin-bottom:14px
+}
+
+.vm-card p{
+ color:#d5dfed;
+ line-height:1.9;
+ margin:0
+}
+
+.vm-tagline{
+ max-width:900px;
+ margin:38px auto 0;
+ padding:30px 20px;
+ border-top:1px solid rgba(244,201,107,.45);
+ border-bottom:1px solid rgba(244,201,107,.25);
+ background:rgba(244,201,107,.035);
+ border-radius:12px
+}
+
+.vm-tagline h3{
+ color:var(--gold);
+ font-size:clamp(21px,3vw,29px);
+ margin-bottom:10px
+}
+
+.vm-tagline p{
+ color:#c5d1e1;
+ font-size:14px;
+ letter-spacing:2px
+}
+
+.vm-tagline strong{
+ display:block;
+ color:var(--gold);
+ font-size:clamp(23px,4vw,32px);
+ letter-spacing:3px;
+ margin-top:18px
+}
+
+/* CONTACT */
+.contact-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:30px
+}
+
+.contact-info{
+ padding:22px;
+ border:1px solid var(--line);
+ border-radius:18px;
+ background:var(--glass);
+ backdrop-filter:blur(18px);
+ box-shadow:var(--shadow)
+}
+
 .contact-info p{margin:15px 0;color:#e0e8f3;overflow-wrap:anywhere}
 .contact-info a{color:var(--gold)}
-form{background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));padding:24px;border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:var(--shadow)}
+
+form{
+ background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));
+ padding:24px;
+ border:1px solid var(--line);
+ border-radius:18px;
+ backdrop-filter:blur(20px);
+ -webkit-backdrop-filter:blur(20px);
+ box-shadow:var(--shadow)
+}
+
 label{display:block;margin:12px 0 5px;color:#e0e8f3}
-input,select,textarea{width:100%;padding:12px;border:1px solid rgba(255,255,255,.18);background:rgba(4,13,27,.68);color:white;border-radius:10px;font:inherit;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(105,201,255,.13)}
+
+input,select,textarea{
+ width:100%;
+ padding:12px;
+ border:1px solid rgba(255,255,255,.18);
+ background:rgba(4,13,27,.68);
+ color:white;
+ border-radius:10px;
+ font:inherit;
+ outline:none
+}
+
+input:focus,select:focus,textarea:focus{
+ border-color:var(--blue);
+ box-shadow:0 0 0 3px rgba(105,201,255,.13)
+}
+
 input::placeholder,textarea::placeholder{color:#91a0b5}
 select option{background:#0b1930;color:#fff}
 textarea{min-height:100px;resize:vertical}
@@ -101,11 +428,31 @@ form .btn{width:100%;margin-top:18px}
 form button:disabled{opacity:.65;cursor:wait;transform:none}
 .note{font-size:12px;color:#b5c1d2;margin-top:12px}
 .note-status{font-size:13px;color:var(--cyan);margin-top:12px;overflow-wrap:anywhere}
-footer{text-align:center;padding:25px;background:rgba(3,9,18,.78);color:#aebbd0;border-top:1px solid var(--line);backdrop-filter:blur(16px)}
-@media(max-width:850px){.desk-scene{opacity:.3;right:-8%;width:45%}.hero-content{width:80%}.top-cta{display:none}}
+
+footer{
+ text-align:center;
+ padding:25px;
+ background:rgba(3,9,18,.78);
+ color:#aebbd0;
+ border-top:1px solid var(--line);
+ backdrop-filter:blur(16px)
+}
+
+@media(max-width:850px){
+ .desk-scene{opacity:.3;right:-8%;width:45%}
+ .hero-content{width:80%}
+ .top-cta{display:none}
+}
+
 @media(max-width:650px){
- header{justify-content:center;text-align:center;padding:15px 4%;background:rgba(5,13,26,.88)}
- .brand{justify-content:center}.mark{width:48px;height:42px;font-size:25px}
+ header{
+  justify-content:center;
+  text-align:center;
+  padding:15px 4%;
+  background:rgba(5,13,26,.88)
+ }
+ .brand{justify-content:center}
+ .mark{width:48px;height:42px;font-size:25px}
  nav{justify-content:center;gap:13px}
  .tagline{letter-spacing:1px}
  .hero{padding:52px 6%;min-height:470px}
@@ -114,122 +461,308 @@ footer{text-align:center;padding:25px;background:rgba(3,9,18,.78);color:#aebbd0;
  .eyebrow{letter-spacing:1.5px}
  section{padding:50px 6%}
  .section-title{font-size:29px}
+ .vm-card{padding:23px}
+ .vm-tagline{padding:25px 12px}
+ .vm-tagline p{letter-spacing:1px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*:before,*:after{transition:none!important}
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<a class="brand" href="#home" aria-label="VR Tech Solutions home"><div class="mark">VR</div><div><div class="brand-name">VR <span>TECH SOLUTIONS</span></div><div class="tagline">YOUR VISION • OUR TECHNOLOGY</div></div></a>
-<nav aria-label="Main navigation"><a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<a class="brand" href="#home" aria-label="VR Tech Solutions home">
+ <div class="mark">VR</div>
+ <div>
+  <div class="brand-name">VR <span>TECH SOLUTIONS</span></div>
+  <div class="tagline">YOUR VISION • OUR TECHNOLOGY</div>
+ </div>
+</a>
+
+<nav aria-label="Main navigation">
+ <a href="#home">Home</a>
+ <a href="#services">Services</a>
+ <a href="#about">About</a>
+ <a href="#contact">Contact</a>
+</nav>
+
 <a class="top-cta" href="https://wa.me/918970240304" target="_blank" rel="noopener noreferrer">☏ &nbsp; Get In Touch</a>
 </header>
+
 <main>
+
 <section class="hero" id="home">
-<div class="hero-content"><div class="eyebrow">INNOVATION • TECHNOLOGY • GROWTH</div><h1><span>VR</span> TECH SOLUTIONS</h1><p class="hero-sub">Smart Digital Solutions for a Stronger Tomorrow</p><p class="hero-copy">We help businesses grow with modern websites, smart software, digital marketing and reliable technology support.</p><a class="btn" href="#contact">Get a Free Consultation &nbsp; →</a><a class="btn outline" href="#services">Explore Services &nbsp; →</a></div>
-<div class="desk-scene" aria-hidden="true"><div class="laptop"><div class="screen"><div><div class="screen-logo">VR</div><div class="screen-title">TECH <span>SOLUTIONS</span></div><div class="screen-tag">YOUR VISION • OUR TECHNOLOGY</div></div></div><div class="keyboard"></div></div></div>
+ <div class="hero-content">
+  <div class="eyebrow">INNOVATION • TECHNOLOGY • GROWTH</div>
+  <h1><span>VR</span> TECH SOLUTIONS</h1>
+  <p class="hero-sub">Smart Digital Solutions for a Stronger Tomorrow</p>
+  <p class="hero-copy">We help businesses grow with modern websites, smart software, digital marketing and reliable technology support.</p>
+  <a class="btn" href="#contact">Get a Free Consultation &nbsp; →</a>
+  <a class="btn outline" href="#services">Explore Services &nbsp; →</a>
+ </div>
+
+ <div class="desk-scene" aria-hidden="true">
+  <div class="laptop">
+   <div class="screen">
+    <div>
+     <div class="screen-logo">VR</div>
+     <div class="screen-title">TECH <span>SOLUTIONS</span></div>
+     <div class="screen-tag">YOUR VISION • OUR TECHNOLOGY</div>
+    </div>
+   </div>
+   <div class="keyboard"></div>
+  </div>
+ </div>
 </section>
-<section id="services"><h2 class="section-title">Our <span>Services</span></h2><p class="subtitle">Click any service to view its details.</p>
+
+<section id="services">
+<h2 class="section-title">Our <span>Services</span></h2>
+<p class="subtitle">Click any service to view its details.</p>
+
 <div class="services">
-<article class="card" tabindex="0" role="button" data-service="website"><div class="icon">💻</div><h3>Website Development</h3><p>Modern, responsive websites designed to present your business professionally on mobile and desktop.</p><p class="hint">View Details →</p></article>
-<article class="card" tabindex="0" role="button" data-service="it"><div class="icon">⚙️</div><h3>Software &amp; IT Services</h3><p>Practical technology solutions and IT support to help your business work efficiently.</p><p class="hint">View Details →</p></article>
-<article class="card" tabindex="0" role="button" data-service="marketing"><div class="icon">📣</div><h3>Digital Marketing</h3><p>Digital promotion strategies to help businesses reach customers and build their online presence.</p><p class="hint">View Details →</p></article>
-<article class="card" tabindex="0" role="button" data-service="business"><div class="icon">🤝</div><h3>Business Support</h3><p>Digital assistance and technology guidance for small businesses and growing teams.</p><p class="hint">View Details →</p></article>
+
+<article class="card" tabindex="0" role="button" data-service="website">
+ <div class="icon">💻</div>
+ <h3>Website Development</h3>
+ <p>Modern, responsive websites designed to present your business professionally on mobile and desktop.</p>
+ <p class="hint">View Details →</p>
+</article>
+
+<article class="card" tabindex="0" role="button" data-service="it">
+ <div class="icon">⚙️</div>
+ <h3>Software &amp; IT Services</h3>
+ <p>Practical technology solutions and IT support to help your business work efficiently.</p>
+ <p class="hint">View Details →</p>
+</article>
+
+<article class="card" tabindex="0" role="button" data-service="marketing">
+ <div class="icon">📣</div>
+ <h3>Digital Marketing</h3>
+ <p>Digital promotion strategies to help businesses reach customers and build their online presence.</p>
+ <p class="hint">View Details →</p>
+</article>
+
+<article class="card" tabindex="0" role="button" data-service="business">
+ <div class="icon">🤝</div>
+ <h3>Business Support</h3>
+ <p>Digital assistance and technology guidance for small businesses and growing teams.</p>
+ <p class="hint">View Details →</p>
+</article>
+
 </div>
-<div id="details" class="details" aria-live="polite"><h3 id="detailTitle"></h3><p id="detailIntro"></p><strong>What this service may include</strong><ul id="detailItems"></ul><p id="detailNote"></p><a id="enquireService" class="btn" href="#contact">Enquire About This Service</a><button id="closeDetails" class="btn outline" type="button">Close Details</button></div>
+
+<div id="details" class="details" aria-live="polite">
+ <h3 id="detailTitle"></h3>
+ <p id="detailIntro"></p>
+ <strong>What this service may include</strong>
+ <ul id="detailItems"></ul>
+ <p id="detailNote"></p>
+ <a id="enquireService" class="btn" href="#contact">Enquire About This Service</a>
+ <button id="closeDetails" class="btn outline" type="button">Close Details</button>
+</div>
 </section>
-<section class="about" id="about"><h2 class="section-title">About <span>Us</span></h2><p>VR Tech Solutions aims to make technology simpler and more accessible for businesses. Our focus is on useful digital services, professional support and solutions tailored to customer needs.</p><p>Contact us to discuss your project and requirements.</p></section>
-<section id="contact"><h2 class="section-title">Let's <span>Connect</span></h2><p class="subtitle">Tell us about your project or service requirements.</p><div class="contact-grid"><div class="contact-info"><h3>Contact Information</h3><p>📧 Email: <a href="mailto:contact@vrtechsolutions24.in">contact@vrtechsolutions24.in</a></p><p>📱 WhatsApp: <a href="https://wa.me/918970240304" target="_blank" rel="noopener noreferrer">+91 89702 40304</a></p><p>💬 Click the WhatsApp link to contact us directly.</p></div>
-<form id="enquiryForm"><h3>Customer Enquiry</h3><label for="name">Full Name</label><input id="name" type="text" required maxlength="100" autocomplete="name" placeholder="Enter your name"><label for="phone">Mobile Number</label><input id="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number"><label for="service">Select Service</label><select id="service" required><option value="">Choose a service</option><option>Website Development</option><option>Software &amp; IT Services</option><option>Digital Marketing</option><option>Business Support</option><option>Other</option></select><label for="message">Project Details</label><textarea id="message" maxlength="1000" placeholder="Tell us what you need"></textarea><button class="btn" type="submit">Save Enquiry &amp; Open WhatsApp</button><p class="note">Your enquiry will be saved to our enquiry database first. WhatsApp will then open with the message ready; press Send in WhatsApp to send it.</p><p class="note-status" id="formStatus" role="status" aria-live="polite"></p></form></div></section>
+
+<!-- ABOUT US WITH VISION AND MISSION -->
+<section class="about" id="about">
+
+<h2 class="section-title">About <span>Us</span></h2>
+
+<p>VR Tech Solutions aims to make technology simpler and more accessible for businesses. Our focus is on useful digital services, professional support and solutions tailored to customer needs.</p>
+
+<p>Contact us to discuss your project and requirements.</p>
+
+<div class="vm-grid">
+
+ <div class="vm-card">
+  <h3>🌟 Our Vision</h3>
+  <p>
+   To become a trusted digital and IT solutions company,
+   empowering businesses with technology and creating
+   opportunities for growth.
+  </p>
+ </div>
+
+ <div class="vm-card">
+  <h3>🎯 Our Mission</h3>
+  <p>
+   To deliver innovative, affordable, and high-quality
+   digital solutions that help businesses grow, succeed,
+   and thrive in the digital world.
+  </p>
+ </div>
+
+</div>
+
+<div class="vm-tagline">
+ <h3>Your Digital Growth, Our Commitment.</h3>
+ <p>INNOVATION &nbsp; | &nbsp; QUALITY &nbsp; | &nbsp; TRUST &nbsp; | &nbsp; GROWTH</p>
+ <strong>VR TECH SOLUTIONS</strong>
+</div>
+
+</section>
+
+<section id="contact">
+<h2 class="section-title">Let's <span>Connect</span></h2>
+<p class="subtitle">Tell us about your project or service requirements.</p>
+
+<div class="contact-grid">
+
+<div class="contact-info">
+ <h3>Contact Information</h3>
+ <p>📧 Email: <a href="mailto:contact@vrtechsolutions24.in">contact@vrtechsolutions24.in</a></p>
+ <p>📱 WhatsApp: <a href="https://wa.me/918970240304" target="_blank" rel="noopener noreferrer">+91 89702 40304</a></p>
+ <p>💬 Click the WhatsApp link to contact us directly.</p>
+</div>
+
+<form id="enquiryForm">
+
+<h3>Customer Enquiry</h3>
+
+<label for="name">Full Name</label>
+<input id="name" type="text" required maxlength="100" autocomplete="name" placeholder="Enter your name">
+
+<label for="phone">Mobile Number</label>
+<input id="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number">
+
+<label for="service">Select Service</label>
+<select id="service" required>
+ <option value="">Choose a service</option>
+ <option>Website Development</option>
+ <option>Software &amp; IT Services</option>
+ <option>Digital Marketing</option>
+ <option>Business Support</option>
+ <option>Other</option>
+</select>
+
+<label for="message">Project Details</label>
+<textarea id="message" maxlength="1000" placeholder="Tell us what you need"></textarea>
+
+<button class="btn" type="submit">Save Enquiry &amp; Open WhatsApp</button>
+
+<p class="note">Your enquiry will be saved to our enquiry database first. WhatsApp will then open with the message ready; press Send in WhatsApp to send it.</p>
+
+<p class="note-status" id="formStatus" role="status" aria-live="polite"></p>
+
+</form>
+</div>
+</section>
+
 </main>
-<footer>© <span id="year"></span> <span>VR TECH SOLUTIONS</span>. All rights reserved.</footer>
+
+<footer>
+© <span id="year"></span> <span>VR TECH SOLUTIONS</span>. All rights reserved.
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* Browser-safe Supabase project settings. Never put a service_role/secret key here. */
 const SUPABASE_URL = "https://rficwjxubmexlkplmpdv.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_XJJALDjMrAEUq_Qol9LiCA_UX79aNgj";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const supabaseClient = window.supabase.createClient(
+ SUPABASE_URL,
+ SUPABASE_PUBLISHABLE_KEY
+);
 
 const serviceData = {
- website:{title:"Website Development",intro:"Build a professional online presence with a website designed around your business and customers.",items:["Business and company websites","Responsive layouts for mobile, tablet and desktop","Service pages and contact information","Customer enquiry forms connected to WhatsApp","Basic on-page SEO structure"],note:"Final features, timeline and pricing depend on your requirements."},
- it:{title:"Software & IT Services",intro:"Practical technology assistance to help your day-to-day business operations run smoothly.",items:["IT setup and troubleshooting guidance","Software installation and basic configuration support","Workflow and digital tool recommendations","Website maintenance and technical assistance"],note:"Available support depends on the specific issue and project scope."},
- marketing:{title:"Digital Marketing",intro:"Promote your business online and help potential customers discover your products or services.",items:["Social media page and content planning","Promotional post and campaign planning","Digital advertising setup guidance","Business profile and online presence improvements","Basic performance review and recommendations"],note:"Advertising spend, posting schedule and deliverables are agreed before work begins."},
- business:{title:"Business Support",intro:"Digital guidance for small businesses that want to organize their work and serve customers more effectively.",items:["Digital tools for everyday business tasks","Customer enquiry and follow-up workflow ideas","Basic online business presence guidance","Technology recommendations based on business needs"],note:"The exact support plan is tailored to the requirements discussed with you."}
+
+ website:{
+  title:"Website Development",
+  intro:"Build a professional online presence with a website designed around your business and customers.",
+  items:[
+   "Business and company websites",
+   "Responsive layouts for mobile, tablet and desktop",
+   "Service pages and contact information",
+   "Customer enquiry forms connected to WhatsApp",
+   "Basic on-page SEO structure"
+  ],
+  note:"Final features, timeline and pricing depend on your requirements."
+ },
+
+ it:{
+  title:"Software & IT Services",
+  intro:"Practical technology assistance to help your day-to-day business operations run smoothly.",
+  items:[
+   "IT setup and troubleshooting guidance",
+   "Software installation and basic configuration support",
+   "Workflow and digital tool recommendations",
+   "Website maintenance and technical assistance"
+  ],
+  note:"Available support depends on the specific issue and project scope."
+ },
+
+ marketing:{
+  title:"Digital Marketing",
+  intro:"Promote your business online and help potential customers discover your products or services.",
+  items:[
+   "Social media page and content planning",
+   "Promotional post and campaign planning",
+   "Digital advertising setup guidance",
+   "Business profile and online presence improvements",
+   "Basic performance review and recommendations"
+  ],
+  note:"Advertising spend, posting schedule and deliverables are agreed before work begins."
+ },
+
+ business:{
+  title:"Business Support",
+  intro:"Digital guidance for small businesses that want to organize their work and serve customers more effectively.",
+  items:[
+   "Digital tools for everyday business tasks",
+   "Customer enquiry and follow-up workflow ideas",
+   "Basic online business presence guidance",
+   "Technology recommendations based on business needs"
+  ],
+  note:"The exact support plan is tailored to the requirements discussed with you."
+ }
+
 };
+
 const panel = document.getElementById("details");
 const serviceSelect = document.getElementById("service");
 
 function showDetails(key) {
- const d = serviceData[key]; if (!d) return;
+
+ const d = serviceData[key];
+ if (!d) return;
+
  document.getElementById("detailTitle").textContent = d.title;
  document.getElementById("detailIntro").textContent = d.intro;
- const list = document.getElementById("detailItems"); list.replaceChildren();
- d.items.forEach(t => { const li = document.createElement("li"); li.textContent = t; list.appendChild(li); });
+
+ const list = document.getElementById("detailItems");
+ list.replaceChildren();
+
+ d.items.forEach(t => {
+  const li = document.createElement("li");
+  li.textContent = t;
+  list.appendChild(li);
+ });
+
  document.getElementById("detailNote").textContent = d.note;
+
  document.getElementById("enquireService").onclick = function() {
-  let opt = [...serviceSelect.options].find(o => o.textContent === d.title);
-  if (!opt) { opt = document.createElement("option"); opt.textContent = d.title; opt.value = d.title; serviceSelect.appendChild(opt); }
+
+  let opt = [...serviceSelect.options].find(
+   o => o.textContent === d.title
+  );
+
+  if (!opt) {
+   opt = document.createElement("option");
+   opt.textContent = d.title;
+   opt.value = d.title;
+   serviceSelect.appendChild(opt);
+  }
+
   serviceSelect.value = opt.value;
  };
- panel.classList.add("active"); panel.scrollIntoView({behavior:"smooth",block:"nearest"});
-}
-document.querySelectorAll(".card[data-service]").forEach(card => {
- card.addEventListener("click", () => showDetails(card.dataset.service));
- card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showDetails(card.dataset.service); } });
-});
-document.getElementById("closeDetails").addEventListener("click", () => panel.classList.remove("active"));
 
-document.getElementById("enquiryForm").addEventListener("submit", async function(e) {
- e.preventDefault();
- const name = document.getElementById("name").value.trim();
- const phone = document.getElementById("phone").value.trim();
- const service = serviceSelect.value;
- const message = document.getElementById("message").value.trim();
- const statusEl = document.getElementById("formStatus");
- const button = this.querySelector('button[type="submit"]');
-
- if (!name || !/^[0-9]{10}$/.test(phone) || !service) {
-  statusEl.textContent = "Please enter your name, a valid 10-digit mobile number and select a service.";
-  return;
- }
-
- button.disabled = true;
- button.textContent = "Saving Enquiry...";
- statusEl.textContent = "Saving your enquiry securely...";
-
- try {
-  const { error } = await supabaseClient.from("enquiries").insert([{
-   customer_name: name,
-   phone: phone,
-   service: service,
-   details: message || "Not provided",
-   status: "New"
-  }]);
-
-  if (error) throw error;
-
-  statusEl.textContent = "Enquiry saved successfully. Opening WhatsApp...";
-  const whatsappText = "VR TECH SOLUTIONS\nNEW CUSTOMER ENQUIRY\n\nCustomer Name: " + name +
-   "\nCustomer Phone: " + phone + "\nInterested Service: " + service +
-   "\nAdditional Details: " + (message || "Not provided") +
-   "\n\nThank you for contacting VR Tech Solutions!";
-  const whatsappURL = "https://wa.me/918970240304?text=" + encodeURIComponent(whatsappText);
-  window.location.href = whatsappURL;
- } catch (error) {
-  console.error("Supabase enquiry insert failed:", error);
-  statusEl.textContent = "Could not save the enquiry. Please contact us directly on WhatsApp. Error: " + (error.message || "Unknown database error");
-  alert("Enquiry was NOT saved to the database. Please check the Supabase table columns and INSERT policy. You can still contact us on WhatsApp.");
-  const whatsappText = "VR TECH SOLUTIONS\nNEW CUSTOMER ENQUIRY\n\nCustomer Name: " + name +
-   "\nCustomer Phone: " + phone + "\nInterested Service: " + service +
-   "\nAdditional Details: " + (message || "Not provided");
-  window.location.href = "https://wa.me/918970240304?text=" + encodeURIComponent(whatsappText);
- } finally {
-  button.disabled = false;
-  button.textContent = "Save Enquiry & Open WhatsApp";
- }
-});
-</script>
-</body>
-</html>
+ panel.classList.add("active");
+ panel.scrollIntoView({behavior:"smooth",block:"neare
