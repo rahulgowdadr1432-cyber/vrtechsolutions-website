@@ -765,4 +765,103 @@ function showDetails(key) {
  };
 
  panel.classList.add("active");
- panel.scrollIntoView({behavior:"smooth",block:"neare
+ panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+document.querySelectorAll(".card[data-service]").forEach(card => {
+
+ card.addEventListener("click", () => {
+  showDetails(card.dataset.service);
+ });
+
+ card.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+   e.preventDefault();
+   showDetails(card.dataset.service);
+  }
+ });
+
+});
+
+document.getElementById("closeDetails").addEventListener("click", () => {
+ panel.classList.remove("active");
+});
+
+document.getElementById("enquiryForm").addEventListener("submit", async function(e) {
+
+ e.preventDefault();
+
+ const name = document.getElementById("name").value.trim();
+ const phone = document.getElementById("phone").value.trim();
+ const service = serviceSelect.value;
+ const message = document.getElementById("message").value.trim();
+
+ const statusEl = document.getElementById("formStatus");
+ const button = this.querySelector('button[type="submit"]');
+
+ if (!name || !/^[0-9]{10}$/.test(phone) || !service) {
+  statusEl.textContent = "Please enter your name, a valid 10-digit mobile number and select a service.";
+  return;
+ }
+
+ button.disabled = true;
+ button.textContent = "Saving Enquiry...";
+ statusEl.textContent = "Saving your enquiry securely...";
+
+ try {
+
+  const { error } = await supabaseClient.from("enquiries").insert([{
+   customer_name: name,
+   phone: phone,
+   service: service,
+   details: message || "Not provided",
+   status: "New"
+  }]);
+
+  if (error) throw error;
+
+  statusEl.textContent = "Enquiry saved successfully. Opening WhatsApp...";
+
+  const whatsappText =
+   "VR TECH SOLUTIONS\nNEW CUSTOMER ENQUIRY\n\nCustomer Name: " + name +
+   "\nCustomer Phone: " + phone +
+   "\nInterested Service: " + service +
+   "\nAdditional Details: " + (message || "Not provided") +
+   "\n\nThank you for contacting VR Tech Solutions!";
+
+  const whatsappURL =
+   "https://wa.me/918970240304?text=" + encodeURIComponent(whatsappText);
+
+  window.location.href = whatsappURL;
+
+ } catch (error) {
+
+  console.error("Supabase enquiry insert failed:", error);
+
+  statusEl.textContent =
+   "Could not save the enquiry. Please contact us directly on WhatsApp. Error: " +
+   (error.message || "Unknown database error");
+
+  alert("Enquiry was NOT saved to the database. Please check the Supabase table columns and INSERT policy. You can still contact us on WhatsApp.");
+
+  const whatsappText =
+   "VR TECH SOLUTIONS\nNEW CUSTOMER ENQUIRY\n\nCustomer Name: " + name +
+   "\nCustomer Phone: " + phone +
+   "\nInterested Service: " + service +
+   "\nAdditional Details: " + (message || "Not provided");
+
+  window.location.href =
+   "https://wa.me/918970240304?text=" + encodeURIComponent(whatsappText);
+
+ } finally {
+
+  button.disabled = false;
+  button.textContent = "Save Enquiry & Open WhatsApp";
+
+ }
+
+});
+</script>
+
+</body>
+</html>
